@@ -1,6 +1,6 @@
 {
   "name": "@codedesignplus/git-version",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.0",
   "description": "Semver versioning based on the git history and commit messages of your repository.",
   "author": "CodeDesignPlus",
   "homepage": "https://github.com/codedesignplus/CodeDesignPlus.Npm.GitVersion",
