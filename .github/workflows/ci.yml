@@ -120,7 +120,7 @@ jobs:
           npm version ${{steps.test-action.outputs.new-version-prefix}}
         
       - name: Pack
-        run: npm pack
+        run: npm pack --pack-destination dist
 
       - name: Publish to npm
         run: npm publish --tag ${{steps.test-action.outputs.previous-version-prefix}} --access=public

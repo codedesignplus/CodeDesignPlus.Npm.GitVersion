@@ -94,7 +94,11 @@ typings/
 .DS_Store
 Thumbs.db
 
+# Ignore scannerwork
+.scannerwork/
+
 # Ignore built ts files
+__tests__/
 __tests__/runner/*
 __tests__/temp/*
 
