@@ -114,7 +114,10 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: Set Version
-        run: npm version ${{steps.test-action.outputs.new-version-prefix}}
+        run: |
+          git status
+          git reset --hard HEAD
+          npm version ${{steps.test-action.outputs.new-version-prefix}}
         
       - name: Pack
         run: npm pack
