@@ -115,8 +115,6 @@ jobs:
 
       - name: Set Version
         run: |
-          git status
-          git reset --hard HEAD
           npm version ${{steps.test-action.outputs.new-version-prefix}}
         
       - name: Pack
