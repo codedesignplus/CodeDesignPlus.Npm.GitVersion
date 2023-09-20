@@ -94,5 +94,8 @@
       "/node_modules/",
       "/__tests__/"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

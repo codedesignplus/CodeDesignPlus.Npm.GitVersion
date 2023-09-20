@@ -68,7 +68,7 @@ jobs:
 
       - name: Test Local Action
         id: test-action
-        uses: ./
+        uses: codedesignplus/semver-git-version@v0.1.4
         with:
           folder: ${{github.workspace}}
           release-branch: 'main'
@@ -77,7 +77,6 @@ jobs:
           major-identifier: 'breaking'
           minor-identifier: 'feat' 
           prefix: 'v'
-          dir-affected: ./
           previous-version: true
           new-version: true
 
@@ -114,6 +113,23 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
+      - name: Set Version
+        run: pnpm version ${{steps.test-action.outputs.previous-version-prefix}}
+        
+      - name: Pack
+        run: pnpm pack
+
+      - name: Publish to npm
+        run: pnpm publish --tag ${{steps.test-action.outputs.previous-version-prefix}} --access=public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      
+      - name: Publish to GitHub Packages
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+          echo "@codedesignplus:registry=https://npm.pkg.github.com" >> ~/.npmrc 
+          pnpm publish --tag ${{steps.test-action.outputs.previous-version-prefix}} --access=public
+
       - name: Push tag
         id: push_tag
         if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
@@ -140,6 +156,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: ${{ steps.test-action.outputs.new-version-prefix }}
           name: "actions/codedesignplus-git-version@${{ steps.test-action.outputs.new-version-prefix }}"
-          body: ${{ steps.build_changelog.outputs.changelog }} # esto usará el changelog generado anteriormente
+          body: ${{ steps.build_changelog.outputs.changelog }} 
           prerelease: ${{ contains(github.ref, 'rc') || contains(github.ref, 'dev') }}
           
