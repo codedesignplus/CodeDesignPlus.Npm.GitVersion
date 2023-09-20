@@ -103,3 +103,4 @@ __tests__/temp/*
 .vscode
 *.code-workspace
 test-report.xml
+dist/

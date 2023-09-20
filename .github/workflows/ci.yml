@@ -114,13 +114,13 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: Set Version
-        run: pnpm version ${{steps.test-action.outputs.previous-version-prefix}}
+        run: npm version ${{steps.test-action.outputs.previous-version-prefix}}
         
       - name: Pack
-        run: pnpm pack
+        run: npm pack
 
       - name: Publish to npm
-        run: pnpm publish --tag ${{steps.test-action.outputs.previous-version-prefix}} --access=public
+        run: npm publish --tag ${{steps.test-action.outputs.previous-version-prefix}} --access=public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       
@@ -128,7 +128,7 @@ jobs:
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
           echo "@codedesignplus:registry=https://npm.pkg.github.com" >> ~/.npmrc 
-          pnpm publish --tag ${{steps.test-action.outputs.previous-version-prefix}} --access=public
+          npm publish --tag ${{steps.test-action.outputs.previous-version-prefix}} --access=public
 
       - name: Push tag
         id: push_tag
