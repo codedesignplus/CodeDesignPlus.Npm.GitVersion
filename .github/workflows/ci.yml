@@ -114,20 +114,25 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: Set Version
+        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
         run: |
           git reset --hard HEAD
           npm version ${{steps.test-action.outputs.new-version-prefix}}
         
       - name: Pack
+        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
         run: npm pack --pack-destination dist
 
       - name: GitHub package registry authentication
+        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
         run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GH_PACKAGE_TOKEN }}
 
       - name: Npm registry authentication
+        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
         run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       
       - name: Publish
+        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
         run: |
           npm publish --access=public
 
