@@ -123,7 +123,7 @@ jobs:
         run: npm pack --pack-destination dist
 
       - name: Publish to npm
-        run: npm publish --tag ${{steps.test-action.outputs.previous-version-prefix}} --access=public
+        run: npm publish --tag ${{steps.test-action.outputs.new-version-prefix}} --access=public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       
@@ -131,7 +131,7 @@ jobs:
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
           echo "@codedesignplus:registry=https://npm.pkg.github.com" >> ~/.npmrc 
-          npm publish --tag ${{steps.test-action.outputs.previous-version-prefix}} --access=public
+          npm publish --tag ${{steps.test-action.outputs.new-version-prefix}} --access=public
 
       - name: Push tag
         id: push_tag
