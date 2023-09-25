@@ -114,21 +114,27 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: Set Version
-        run: npm version ${{steps.test-action.outputs.previous-version-prefix}}
+        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
+        run: |
+          git reset --hard HEAD
+          npm version ${{steps.test-action.outputs.new-version-prefix}}
         
       - name: Pack
-        run: npm pack
+        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
+        run: npm pack --pack-destination dist
 
-      - name: Publish to npm
-        run: npm publish --tag ${{steps.test-action.outputs.previous-version-prefix}} --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: GitHub package registry authentication
+        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
+        run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GH_PACKAGE_TOKEN }}
+
+      - name: Npm registry authentication
+        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
+        run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       
-      - name: Publish to GitHub Packages
+      - name: Publish
+        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
-          echo "@codedesignplus:registry=https://npm.pkg.github.com" >> ~/.npmrc 
-          npm publish --tag ${{steps.test-action.outputs.previous-version-prefix}} --access=public
+          npm publish --access=public
 
       - name: Push tag
         id: push_tag
