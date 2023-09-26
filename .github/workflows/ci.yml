@@ -123,18 +123,29 @@ jobs:
         if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
         run: npm pack --pack-destination dist
 
-      - name: GitHub package registry authentication
-        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
-        run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GH_PACKAGE_TOKEN }}
+      # - name: GitHub package registry authentication
+      #   if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
+      #   run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GH_PACKAGE_TOKEN }}
 
-      - name: Npm registry authentication
-        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
-        run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+      # - name: Npm registry authentication
+      #   if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
+      #   run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       
-      - name: Publish
-        if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
-        run: |
-          npm publish --access=public
+      # - name: Publish
+      #   if: env.IS_RELEASE == 'true' || env.IS_RC == 'true' || env.IS_BETA == 'true'
+      #   run: |
+      #     npm publish --access=public
+
+      
+      - name: Publish to npmjs.com
+        run: npm publish --registry=https://registry.npmjs.org/ --access=public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to GitHub Packages
+        run: npm publish --registry=https://npm.pkg.github.com/ --access=public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGE_TOKEN }}
 
       - name: Push tag
         id: push_tag
