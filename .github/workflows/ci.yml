@@ -136,16 +136,21 @@ jobs:
       #   run: |
       #     npm publish --access=public
 
-      
-      - name: Publish to npmjs.com
-        run: npm publish --registry=https://registry.npmjs.org/ --access=public
+      - name: Configure npm for npmjs.com authentication
+        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish to GitHub Packages
-        run: npm publish --registry=https://npm.pkg.github.com/ --access=public
+      - name: Publish to npmjs.com
+        run: npm publish --registry=https://registry.npmjs.org/
+
+      - name: Configure npm for GitHub Packages authentication
+        run: echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGE_TOKEN }}
+
+      - name: Publish to GitHub Packages
+        run: npm publish --registry=https://npm.pkg.github.com/
 
       - name: Push tag
         id: push_tag
