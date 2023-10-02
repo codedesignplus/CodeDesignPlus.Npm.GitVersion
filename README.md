@@ -2,11 +2,11 @@
 
 <br />
 <p align="center">
-  <a href="https://github.com/codedesignplus/CodeDesignPlus.Actions.GitVersion/README">
+  <a href="https://github.com/codedesignplus/CodeDesignPlus.Npm.GitVersion/README">
     <img src="https://i.imgur.com/PwbGy0o.png" alt="Logo">
   </a>
 
-  <h3 align="center">CodeDesignPlus.Actions.GitVersion</h3>
+  <h3 align="center">CodeDesignPlus.Npm.GitVersion</h3>
 
   <p align="center">
     Semver versioning based on the git history and commit messages of your repository.
@@ -16,23 +16,23 @@
     </a>
     <br />
     <br />
-    <a href="https://github.com/codedesignplus/CodeDesignPlus.Actions.GitVersion/issues">
-      <img src="https://img.shields.io/github/issues/codedesignplus/CodeDesignPlus.Actions.GitVersion?color=0088ff&style=for-the-badge&logo=github" alt="codedesignplus/CodeDesignPlus.Actions.GitVersion's issues"/>
+    <a href="https://github.com/codedesignplus/CodeDesignPlus.Npm.GitVersion/issues">
+      <img src="https://img.shields.io/github/issues/codedesignplus/CodeDesignPlus.Npm.GitVersion?color=0088ff&style=for-the-badge&logo=github" alt="codedesignplus/CodeDesignPlus.Npm.GitVersion's issues"/>
     </a>
-    <a href="https://github.com/codedesignplus/CodeDesignPlus.Actions.GitVersion/pulls">
-      <img src="https://img.shields.io/github/issues-pr/codedesignplus/CodeDesignPlus.Actions.GitVersion?color=0088ff&style=for-the-badge&logo=github"  alt="codedesignplus/CodeDesignPlus.Actions.GitVersion's pull requests"/>
+    <a href="https://github.com/codedesignplus/CodeDesignPlus.Npm.GitVersion/pulls">
+      <img src="https://img.shields.io/github/issues-pr/codedesignplus/CodeDesignPlus.Npm.GitVersion?color=0088ff&style=for-the-badge&logo=github"  alt="codedesignplus/CodeDesignPlus.Npm.GitVersion's pull requests"/>
     </a>
     <br />    
     <br />
     <img alt="sonarcloud" src="https://sonarcloud.io/images/project_badges/sonarcloud-white.svg" width="100">
     <br />
-    <img alt="Quality Gate Status" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Actions.GitVersion.Key&metric=alert_status" />    
-    <img alt="Security Rating" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Actions.GitVersion.Key&metric=security_rating"/>
-    <img alt="Reliability Rating" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Actions.GitVersion.Key&metric=reliability_rating" />
-    <img alt="Vulnerabilities" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Actions.GitVersion.Key&metric=vulnerabilities" />
-    <img alt="Bugs" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Actions.GitVersion.Key&metric=bugs" />
-    <img alt="Code Smells" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Actions.GitVersion.Key&metric=code_smells" />
-    <img alt="Coverage" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Actions.GitVersion.Key&metric=coverage" />
+    <img alt="Quality Gate Status" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Npm.GitVersion.Key&metric=alert_status" />    
+    <img alt="Security Rating" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Npm.GitVersion.Key&metric=security_rating"/>
+    <img alt="Reliability Rating" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Npm.GitVersion.Key&metric=reliability_rating" />
+    <img alt="Vulnerabilities" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Npm.GitVersion.Key&metric=vulnerabilities" />
+    <img alt="Bugs" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Npm.GitVersion.Key&metric=bugs" />
+    <img alt="Code Smells" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Npm.GitVersion.Key&metric=code_smells" />
+    <img alt="Coverage" src="https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Npm.GitVersion.Key&metric=coverage" />
   </p>
 </p>
 
@@ -59,9 +59,10 @@
 <!-- About The Project -->
 ## About The Project
 
-This project centers on version management within a Git repository, particularly determining previous and new versions based on commit history and tags. It utilizes the semver library for semver-related operations and @actions/core for certain GitHub Actions-related operations.
+This project centers on version management within a Git repository, particularly determining previous and new versions based on commit history and tags. It utilizes the semver library for semver-related operations.
 
 Key features include:
+
 - Determining the previous version based on Git tags.
 - Calculating the new version based on commits since the last tag and certain predefined rules.
 - Accounting for different branches like `release`, `release candidate`, and `beta` to determine version type (e.g., `prerelease`).
@@ -78,7 +79,6 @@ This project is an essential tool for those seeking automated version management
 
 2. **Libraries and Modules**: The following libraries and modules are necessary:
    - `semver`: A library for working with semantic version numbers.
-   - `@actions/core`: Used to interact with GitHub Actions. This suggests that the code might be intended to be used as part of a GitHub Action.
    - `child_process`: This native Node.js module is used to execute shell commands, in this case, Git commands.
 
 3.  **Git Repository**: Since this project is designed to work with Git tags and commits, you'll need a Git repository where you intend to apply the version management.
@@ -91,27 +91,24 @@ This project is an essential tool for those seeking automated version management
 <!-- Getting Started -->
 ## Getting Started
 
-Para obtener una copia local en funcionamiento siga los siguientes pasos:
-
-1. Clone este repositorio en su computador.
-2. Para abrir el proyecto
-    <ul>
-        <li>Descargue e instale la versión de <a target="_blank" href="https://code.visualstudio.com/">Visual Studio Code</a></li>
-        <li>Abrir el proyecto con VS Code</li>
-    </ul>
+To kickstart your journey with our project, begin by cloning the repository to your local machine. Once you've secured a copy, ensure you have the necessary prerequisites installed a list can be found in our "Prerequisites" section. Open the project using your preferred IDE (we recommend Visual Studio Code for optimal compatibility). Follow the installation steps detailed in the "Installation" segment to set up your development environment. After completing these foundational steps, you're all set to dive into the code, experiment with its features, and contribute to our growing community. Happy coding!
 
 
 ### Installation
 
 1. Clone the repo
     ```powershell
-    git clone https://github.com/codedesignplus/CodeDesignPlus.Actions.GitVersion.git
+    git clone https://github.com/codedesignplus/CodeDesignPlus.Npm.GitVersion.git
     ```
 2. Retore Packages
     ```powershell
     npm install
     ```
-3. Run test
+3. Build Project
+    ```powershell
+    npm run bundle
+    ```
+4. Run test
     ```powershell
     npm run test
     ```
@@ -135,77 +132,74 @@ The following table provides an overview of the available npm scripts for this p
 <!-- Usage -->
 ## Usage
 
-The `Calculate Version` step uses the `codedesignplus/git-version` action to automatically compute versions based on certain criteria and configurations we set. This action looks at the commit history and, based on specific identifiers and other configurations, determines the appropriate version for the next release.
+The key function of this project is to calculate versions based on certain criteria and configurations. This project looks at the commit history and, based on specific identifiers and configurations, determines the appropriate version for the next release.
 
 ### Detailed Steps:
 
-1. **Repository Checkout**: Before using any action that analyzes the contents of the repository, ensure that you've checked out the code:
+1. **Repository Checkout**: Ensure that you've checked out the code in your repository before running any version calculation.
+2. **Configuring Version Calculation**:
 
-    ```yaml
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    ```
+   The tool can be configured to determine versions based on various parameters, including:
 
-2. **Add the `Calculate Version` step**:
+   - Directory to run the command in.
+   - The name of branches like main, rc, and dev.
+   - Identifiers for major and minor releases, such as breaking and feat.
+   - Prefixes like v to be added before the version number.
+   - Directories affected inside a monorepo to calculate changes.
+   - Flags to determine whether to return the previous version or calculate a new one.
+- **Accessing the results**: After the version calculation process, the results can be utilized in various ways, such as tagging the repository, printing them, or integrating them into other tools or systems.
 
-    ```yaml
-    - name: Calculate Version
-      id: version
-      uses: codedesignplus/git-version@v0.0.1
-      with:
-        folder: ${{github.workspace}}
-        release-branch: 'main'
-        release-candidate-branch: 'rc'
-        beta-branch: 'dev'
-        major-identifier: 'breaking'
-        minor-identifier: 'feat'
-        prefix: 'v'
-        dir-affected: ./
-        previous-version: true
-        new-version: true
-    ```
+### Options
 
-    Here's a description of each parameter:
+Below is a table outlining the various configuration options available when utilizing the GitVersion class. These options determine how the class calculates and interprets versions based on Git commit history, tags, and branch specifics.
 
-    - `folder`: Specifies the directory in which the command will run. Typically, this is the GitHub workspace (`${{github.workspace}}`).
-    - `release-branch`: The name of the main branch where releases are made. Typically, this is `main`.
-    - `release-candidate-branch`: The name of the release candidate branch, often `rc`.
-    - `beta-branch`: The name of the beta branch, typically `dev`.
-    - `major-identifier`: Identifier for commits that signify a major release. For instance, a breaking commit might be termed `breaking`.
-    - `minor-identifier`: Identifier for commits that signify a minor release. A new feature might be tagged as `feat`.
-    - `prefix`: Prefix to be added before the version. This is commonly `v`, resulting in versions like `v1.0.0`.
-    - `dir-affected`: Directory affected inside a monorepo to calculate changes.
-    - `previous-version`: Whether to return the previous version instead of calculating a new one.
-    - `new-version`: Whether to return the newly calculated version.
-
-3. **Accessing the outputs**: After the step has run, the outputs can be accessed using the syntax `${{ steps.<step-id>.outputs.<output-key> }}`. For instance, to get the newly computed version, you would use `${{ steps.version.outputs.new-version }}`.
-
-4. **Using the outputs**: The outputs can then be used in subsequent steps to, for instance, print them, tag the repository, or any other process that requires knowledge of the computed version.
+| Configuration Option       | Description                                                                                           | Default Value  |
+|----------------------------|-------------------------------------------------------------------------------------------------------|----------------|
+| `folder`                   | Directory in which the Git commands will run.                                                          | `'./'`         |
+| `releaseBranch`            | Primary branch for releasing stable versions.                                                         | `'main'`       |
+| `releaseCandidateBranch`   | Branch used for release candidates, undergoing final tests before becoming a stable release.          | `'rc'`         |
+| `betaBranch`               | Branch for beta releases, meant for early feedback or testing.                                        | `'dev'`        |
+| `majorIdentifier`          | Keyword in commit messages to signal major changes.                                                   | `'breaking'`   |
+| `minorIdentifier`          | Keyword in commit messages to signal minor feature additions.                                         | `'feat'`       |
+| `prefix`                   | Prefix added before version numbers.                                                                  | `'v'`          |
+| `dirAffected`              | Specifies which directory inside a monorepo should be considered for version calculation.              | `'./'`         |
 
 ### Example:
 
 Once you have set up and executed the `Calculate Version` step, you can print its results or use them in subsequent actions:
 
-```yaml
-uses: codedesignplus/semver-git-version@v0.1.4
-with:
-  folder: ${{github.workspace}}
-  release-branch: 'main'
-  release-candidate-branch: 'rc'
-  beta-branch: 'dev'
-  major-identifier: 'breaking'
-  minor-identifier: 'feat' 
-  prefix: 'v'
-  dir-affected: ./
-  previous-version: true
-  new-version: true
+```typescript
+import { GitVersion } from './git-version';
+
+const gitVersion = new GitVersion({
+    folder: './path-to-your-git-repo',  // Point this to your repository's local path
+    releaseBranch: 'main', 
+    releaseCandidateBranch: 'rc',
+    betaBranch: 'dev',
+    majorIdentifier: 'breaking',
+    minorIdentifier: 'feat',
+    prefix: 'v',
+    dirAffected: './'
+});
+
+// Fetch the previous version from Git tags
+const previousVersion = await gitVersion.getPreviousVersion();
+console.log(`Previous Version: ${previousVersion}`);
+
+// Calculate the new version based on commit messages since the last Git tag
+const newVersion = await gitVersion.getNewVersion();
+console.log(`New Version: ${newVersion}`);
+
+// Get the last commit's hash
+const lastCommit = await gitVersion.getLastCommit();
+console.log(`Last Commit Hash: ${lastCommit}`);
 ```
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-Refer to [issues](https://github.com/codedesignplus/CodeDesignPlus.Actions.GitVersion/issues) for a list of proposed features and known issues.
+Refer to [issues](https://github.com/codedesignplus/CodeDesignPlus.Npm.GitVersion/issues) for a list of proposed features and known issues.
 
 <!-- CONTRIBUTING -->
 ## Contributing
