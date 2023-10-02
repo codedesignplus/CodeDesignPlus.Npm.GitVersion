@@ -2,4 +2,4 @@ lib/
 dist/
 node_modules/
 coverage/
-src/*.d.ts
+src/**/*.d.ts
